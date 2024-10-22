@@ -1,0 +1,53 @@
+.background {
+  background: url("../../../assets/img/img_bienv.jpg") no-repeat center center
+    fixed;
+  background-color: #009788;
+  object-fit: cover;
+  padding: 2rem 0px;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bt-register{
+  border-color: #0d5dd3;
+}
+
+.boton-container {
+  position: absolute;
+  bottom: 2rem;
+}
+
+.btn .rounded-pill {
+  font-weight: 500;
+}
+
+.btn:last-child {
+  background-color: aliceblue;
+}
+
+.btn:hover {
+  background-color: blueviolet;
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+  .background {
+    background-color: #009788;
+    object-fit: cover;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}

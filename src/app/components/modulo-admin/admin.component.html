@@ -1,0 +1,40 @@
+<section id="nav_admin">
+  <!-- Header de usuario -->
+  <app-navbarusuariologueado></app-navbarusuariologueado>
+</section>
+
+
+<div class="main">
+   <section id="fraseBienvenida">
+    <div class="container fraseBienvenida">
+      @if(usuario){
+      <h2>Hola, {{ usuario.nombre }}!</h2>
+      }
+    </div>
+  </section>
+  
+  <div class="container-fluid btn-container">
+    <div class="d-flex flex-column justify-content-center align-items-center btn-container-group">
+      <a [routerLink]="['/inbox_admin']" class="btn btn-secondary btn-lg" type="button"
+        >Ver Mensajes</a
+      >
+      <a
+        [routerLink]="['/configuraciones']"
+        class="btn btn-secondary btn-lg"
+        type="button"
+        >Configurar Servicios</a
+      >
+      <a
+        [routerLink]="['/buscar_usuarios']"
+        class="btn btn-secondary btn-lg"
+        type="button"
+        >Buscar Usuarios</a
+      >
+    </div>
+  </div>
+</div>
+
+<!-- Footer generico -->
+<section id="nav-footer">
+  <app-footer class="fixed-bottom"></app-footer>
+</section>

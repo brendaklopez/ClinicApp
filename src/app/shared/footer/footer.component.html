@@ -1,0 +1,115 @@
+<nav class="navbar d-flex flex-row justify-content-around py-3">
+  @if(usuario && usuario.idRol == 1){
+  <ul class="d-flex flex-row justify-content-around align-items-center">
+    <li>
+      <a [routerLink]="['/home_usuario']" class="border">
+        <img src="../../../assets/img/home.svg" alt="" class="border m-0 p-0" title="Home_usuario" />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/mis_turnos']" class="border">
+        <img
+          src="../../../assets/img/calendar.svg"
+          alt="icono-listado-de-turnos"
+          class="border m-0 p-0"
+          title="Mis turnos"
+        />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/especialidades']" class="border">
+        <img
+          src="../../../assets/img/specialties.svg"
+          alt="icono-especialidades"
+          class="border m-0 p-0"
+          title="Especialidades"
+        />
+      </a>
+    </li>
+    <li>
+      <a (click)="logout()" class="border">
+        <img
+          src="../../../assets/img/logout.svg"
+          alt="icono_salir"
+          title="Salir"
+        />
+      </a>
+    </li>
+  </ul>
+  } @else if(usuario && usuario.idRol == 2){
+  <ul class="d-flex flex-row justify-content-around align-items-center">
+    <li>
+      <a [routerLink]="['/home_medico']" class="border">
+        <img src="../../../assets/img/home.svg" alt="icono-home-medico" class="border m-0 p-0" title="Home medico"/>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/buscar']" class="border">
+        <img
+          src="../../../assets/img/list-solid.svg"
+          alt="icono-buscar-usuarios-medico"
+          class="border m-0 p-0"
+          title="Buscar"
+        />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/inbox']" class="border">
+        <img
+          src="../../../assets/img/inbox.svg"
+          alt="icono_inbox-de-mensajes-internos-medico"
+          class="border m-0 p-0"
+          title="Inbox"
+        />
+      </a>
+    </li>
+     <li>
+      <a [routerLink]="['/videollamada']" class="border">
+        <img
+          src="../../../assets/img/videocameraON.svg"
+          alt="icono_videollamada"
+          title="Videollamada"
+        />
+      </a>
+    </li>     
+  </ul>
+  } @else if(usuario && usuario.idRol == 3){
+  <ul class="d-flex flex-row justify-content-around align-items-center">
+    <li>
+      <a [routerLink]="['/admin']" class="border">
+        <img src="../../../assets/img/home.svg" alt="icono-home-admin" class="border m-0 p-0" title="Home administrador"/>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/buscar_usuarios']" class="border">
+        <img
+          src="../../../assets/img/search-folder.svg"
+          alt="icono-buscar-usuarios"
+          class="border m-0 p-0"
+          title="Buscar usuarios"
+        />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/inbox_admin']" class="border">
+        <img
+          src="../../../assets/img/inbox.svg"
+          alt="icono_inbox-de-mensajes-internos"
+          class="border m-0 p-0"
+          title="Inbox admin"
+        />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/configuraciones']" class="border">
+        <img
+          src="../../../assets/img/specialties.svg"
+          alt="icono_configuraciones"
+          title="Configuraciones"
+        />
+      </a>
+    </li>
+  </ul>
+  }
+</nav>
+

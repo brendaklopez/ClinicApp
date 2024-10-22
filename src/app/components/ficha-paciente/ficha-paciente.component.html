@@ -1,0 +1,78 @@
+<!-- Modal Editar Usuario -->
+<app-modal-editarcita
+  (citaEditada)="citaEditadaHandler($event)"
+  [datoEntrada]="datos"
+></app-modal-editarcita>
+
+<section id="nav_medico">
+  <!-- Header de usuario -->
+  <app-navbarusuariologueado></app-navbarusuariologueado>
+</section>
+
+<!-- Main -->
+<div class="main">
+  <div class="container d-flex flex-row justify-content-around my-3">
+    <h3 class="pb-1">Editar cita</h3>
+    <div class="icono-editar">
+      <img
+        src="../../../assets/img/edit.svg"
+        alt="icono-editar"
+        (click)="abrirModalEditarCita()"
+      />
+    </div>
+  </div>
+  <section>
+    <div
+      class="container d-flex flex-column justify-content-center align-items-center"
+    >
+      @if(turno){
+      <div class="card">
+        <div class="card-body">
+          <!-- Detalles del turno -->
+          <div class="wrapper">
+            @if(usuarioFicha){
+            <p class="me-2 fw-bold">Paciente</p>           
+            <p>
+              {{ usuarioFicha.nombre | titlecase }}&ensp;{{
+                usuarioFicha.apellido | titlecase
+              }}
+            </p>
+            }
+          </div>
+          <div class="wrapper">
+            <p class="card-text fw-bold me-2">ID Cita:</p>
+            <p>{{ turno.idCita }}</p>
+          </div>
+          <div class="wrapper">
+            <p class="card-text fw-bold me-2">Especialista:</p>
+            <p>
+              {{ usuarioMedico?.nombre | titlecase }}&ensp;{{
+                usuarioMedico?.apellido | titlecase
+              }}
+            </p>
+          </div>
+          <div class="wrapper">
+            <p class="card-text fw-bold me-2">Fecha:</p>
+            <p>{{ turno.fecha | date : "dd/MM/yy" }}</p>
+          </div>
+          <div class="wrapper">
+            <p class="card-text fw-bold me-2">Rango de Horario:</p>
+            <p>{{ turno.hora }}</p>
+          </div>
+          <div
+            class="d-flex flex-row text-wrap justify-content-start align-items-start"
+          >
+            <p class="card-text fw-bold me-2">Motivo de consulta:</p>
+            <p>{{ turno.motivoConsulta }}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+</div>
+
+<!-- Footer generico -->
+<section id="nav-footer">
+  <app-footer class="fixed-bottom"></app-footer>
+</section>

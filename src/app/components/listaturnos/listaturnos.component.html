@@ -1,0 +1,86 @@
+<section id="nav_usuario">
+  <!-- Header de usuario -->
+  <app-navbarusuariologueado></app-navbarusuariologueado>
+</section>
+<div class="container-fluid d-flex flex-row">
+  <a [routerLink]="['/home_usuario']">
+    <img
+      class="ms-4 caret"
+      src="../../../assets/img/caret_back.png"
+      alt="icono_regresar"
+    />
+  </a>
+  <h3 class="ms-5 pb-1">Mis Turnos</h3>
+</div>
+
+<!-- Botones estado de turnos 'proximos' y 'cancelados' -->
+<div class="main">
+  <div
+    class="container-fluid bg-transparent border-pill gap-2 d-flex justify-content-end align-items-end btn-container"
+  >
+    <span
+      class="btn btn-outline-dark rounded-pill btn-sm"
+      [ngClass]="{ active: botonActivo === 'cancelados' }"
+      (click)="setActivo('cancelados')"
+      >Cancelados</span
+    >
+    <span
+      class="btn btn-outline-dark rounded-pill btn-sm"
+      [ngClass]="{ active: botonActivo === 'proximos' }"
+      (click)="setActivo('proximos')"
+      >Próximos</span
+    >
+  </div>
+
+  <!-- Card de cada turno -->
+  <section id="card-turnos">
+    <div class="container">
+      @switch (citas.length === 0){ @case (true) {
+      <div class="card mb-3 card-vacia">
+        <div
+          class="card-body p-2 m-0 d-flex flex-column justify-content-center align-items-center"
+        >
+          <span>No tienes turnos</span>
+        </div>
+      </div>
+      } @default{ @for(cita of citas; track cita.idCita){
+      <div class="card mb-3" [routerLink]="['/turno/', cita.idCita]">
+        <div class="row g-0">
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <img
+              src="../../../assets/img/logo.png"
+              class="img-fluid rounded-start doctor"
+              alt="imagen_doctor"
+            />
+          </div>
+          <div class="col-9">
+            <div
+              class="card-body p-2 m-0 d-flex flex-column justify-content-center align-items-center"
+            >
+              <!-- Nombre completo y especialidad -->
+              <h6 class="card-title">
+                {{  cita.medico?.categoria | categoriaNombre }}
+              </h6>
+              <h5>
+                Dr.{{ cita.medico?.nombre }}&ensp;
+                {{ cita.medico?.apellido }}
+              </h5>
+              <small>
+                {{ cita.fecha | date : "dd/MM/yy" }} - {{ cita.hora }}&ensp;Hs.
+              </small>
+              <small>
+                {{ cita.motivoConsulta }}
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      }}}
+    </div>
+  </section>
+</div>
+
+<!-- Footer generico -->
+<section id="nav-footer">
+  <app-footer class="fixed-bottom"></app-footer>
+</section>

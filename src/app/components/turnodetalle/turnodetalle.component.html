@@ -1,0 +1,79 @@
+<section id="nav_usuario">
+  <!-- Header de usuario -->
+  <app-navbarusuariologueado></app-navbarusuariologueado>
+  <div class="container-fluid d-flex flex-row">
+    <a [routerLink]="['/mis_turnos']">
+      <img
+        class="ms-4 caret"
+        src="../../../assets/img/caret_back.png"
+        alt="icono_regresar"
+      />
+    </a>
+    <h3 class="ms-5 pb-1">Turno Detalle</h3>
+  </div>
+</section>
+
+<div class="main">
+  <div
+    class="container d-flex flex-column justify-content-center align-items-center"
+  >
+    @if(turno){
+    <div class="card">
+      <div class="card-body">
+        <!-- Detalles del turno -->
+        <div class="wrapper">
+          @if(usuario){
+          <p class="me-2 fw-bold">Paciente</p>
+          <p>
+            {{ usuario.nombre | titlecase }}&#8194;{{
+              usuario.apellido | titlecase
+            }}
+          </p>
+          }
+        </div>
+        <div class="wrapper">
+          <p class="card-text fw-bold me-2">ID Cita:</p>
+          <p>{{ turno.idCita }}</p>
+        </div>
+        <div class="wrapper">
+          <p class="card-text fw-bold me-2">Especialista:</p>
+          @if(usuarioMedico){
+          <p>
+            {{ usuarioMedico?.nombre | titlecase }}&ensp;{{
+              usuarioMedico?.apellido | titlecase
+            }}
+          </p>
+        }@else {
+          <p>{{ 'No existe el medico asociado' }}</p>
+          }
+        </div>
+        <div class="wrapper">
+          <p class="card-text fw-bold me-2">Fecha:</p>
+          <p>{{ turno.fecha | date : "dd/MM/yy" }}</p>
+        </div>
+        <div class="wrapper">
+          <p class="card-text fw-bold me-2">Rango de Horario:</p>
+          <p>{{ turno.hora }}</p>
+        </div>
+        <div
+          class="d-flex flex-row text-wrap justify-content-start align-items-start"
+        >
+          <p class="card-text fw-bold me-2">Motivo de consulta:</p>
+          <p>{{ turno.motivoConsulta }}</p>
+        </div>    
+      </div>
+    </div>
+    }
+    <div class="bg-warning politica">
+      <small class="text-center">
+        Política de pre-cancelación de turnos. Si desea cancelar su turno,
+        debe hacerlo con 24hs de anticipación.
+      </small>
+    </div>
+  </div>
+</div>
+
+<!-- Footer generico -->
+<section id="nav-footer">
+  <app-footer class="fixed-bottom"></app-footer>
+</section>

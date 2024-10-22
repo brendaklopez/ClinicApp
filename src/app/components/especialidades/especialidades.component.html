@@ -1,0 +1,50 @@
+<section id="nav_usuario">
+  <!-- Header de usuario -->
+  <app-navbarusuariologueado></app-navbarusuariologueado>
+</section>
+<div class="container-fluid d-flex flex-row">
+  <a [routerLink]="['/home_usuario']">
+    <img
+      class="ms-4 caret"
+      src="../../../assets/img/caret_back.png"
+      alt="icono_regresar"
+    />
+  </a>
+  <h3 class="ms-5 pb-1">Agendá Tu Turno</h3>
+</div>
+
+<div class="main">
+  <p>Selecciona una especialidad para continuar</p>
+
+  <!-- Carousel Especialidades -->
+  <section id="carousel-especialidades">
+    <div class="container btn-container">
+      @if(especialidades.length > 0){
+      <div class="container-button-group">
+        @for(especialidad of especialidades; track especialidad.idCategoria){
+        <div>
+          <a
+            type="button"
+            class="btn"
+            [routerLink]="['/especialidad/', especialidad.idCategoria]"
+          >
+            <img
+              title="especialidad.nombre"
+              [src]="especialidad.imgSrc"
+              [alt]="'icono_' + especialidad.nombre"
+              class="icono_especialidad"
+              [title]="especialidad.nombre"
+            />
+          </a>
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </section>
+</div>
+
+<!-- Footer generico -->
+<section id="nav-footer">
+  <app-footer class="fixed-bottom"></app-footer>
+</section>
